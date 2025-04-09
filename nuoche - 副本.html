@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>帅哥/美女挪车服务</title>
+    <style>
+        body {
+            font-family: "Microsoft Yahei", sans-serif;
+            text-align: center;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .container {
+            max-width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: transform 0.3s;
+        }
+        button:hover {
+            transform: scale(1.05);
+            background: #45a049;
+        }
+        #finalImage {
+            max-width: 200px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="step1">
+        <h2>❤️帅哥/美女挪车服务 ❤️</h2>
+        <p>请确认您确实需要联系车主</p>
+        <button onclick="showStep(2)">我是有素质的邻居</button>
+    </div>
+
+    <div class="container" id="step2" style="display: none;">
+        <h2>🚗 车辆信息确认 🚗</h2>
+        <p>请确认您要挪动的是这辆：</p>
+        <p>⚡ 白色福特福克斯 苏U-0TU82 ⚡</p>
+        <button onclick="showStep(3)">就是这辆车</button>
+    </div>
+
+    <div class="container" id="step3" style="display: none;">
+        <h2>📜 挪车承诺书 📜</h2>
+        <p style="text-align: left; font-size: 14px;">
+            我承诺：<br>
+            1. 仅用于挪车用途<br>
+            2. 不进行电话骚扰<br>
+            3. 不泄露车主隐私
+        </p>
+        <button onclick="showStep(4)">郑重承诺</button>
+    </div>
+
+    <div class="container" id="step4" style="display: none;">
+        <h2>☎️ 车主电话 ☎️</h2>
+        <p style="font-size: 24px; color: #2196F3;">16602599118</p>
+        <button onclick="showFinal()">已联系车主，感谢</button>
+    </div>
+
+    <div class="container" id="finalStep" style="display: none;">
+        <h2>🐶 感谢您的文明行为 🐾</h2>
+        <img id="finalImage" src="https://www.emoji.com/wp-content/uploads/filebase/3d%20icons/3d-emoji-animals-dog-72dpi-forPersonalUseOnly.gif" alt="感谢动态图">
+        <p>页面将在3秒后关闭...</p>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        
+        function showStep(step) {
+            document.getElementById(`step${currentStep}`).style.display = 'none';
+            document.getElementById(`step${step}`).style.display = 'block';
+            currentStep = step;
+        }
+
+        function showFinal() {
+            document.getElementById(`step4`).style.display = 'none';
+            document.getElementById('finalStep').style.display = 'block';
+            
+            // 添加动态效果
+            const img = document.getElementById('finalImage');
+            let angle = 0;
+            setInterval(() => {
+                angle += 5;
+                img.style.transform = `rotate(${angle}deg)`;
+            }, 100);
+
+            // 自动关闭窗口
+            setTimeout(() => {
+                window.close();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
